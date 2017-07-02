@@ -1,0 +1,9 @@
+{
+  "dirs": [
+    {
+      "name": "default",
+      "title": "Default Overlay",
+      "description": "hello world"
+    }
+  ]
+}

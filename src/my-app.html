@@ -1,0 +1,136 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<!-- ADD VIEWS HERE -->
+<link rel="lazy-import" href="./views/home/view-home.html">
+<link rel="lazy-import" href="./views/default/view-default.html">
+<link rel="lazy-import" href="./views/default/view-default-chat.html">
+<link rel="lazy-import" href="./views/default/view-default-panel.html">
+<link rel="lazy-import" href="./views/default/view-default-hearts.html">
+<link rel="lazy-import" href="./views/default/view-default-info.html">
+<link rel="lazy-import" href="./views/default/view-default-subject.html">
+<link rel="lazy-import" href="./views/default/view-default-tip.html">
+
+<dom-module id="my-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <!-- Get intitial router -->
+    <app-location route="{{route}}"></app-location>
+
+    <!-- Get view route -->
+    <app-route
+        route="{{route}}"
+        pattern="[[rootPattern]]:page"
+        data="{{routeData}}"
+        tail="{{subroute}}">
+    </app-route>
+
+    <!-- Get user route -->
+    <app-route
+        route="{{subroute}}"
+        pattern="/:username"
+        data="{{subrouteData}}">
+    </app-route>
+
+    <!-- Select view -->
+    <iron-pages
+        selected="[[page]]"
+        attr-for-selected="name"
+        fallback-selection="home"
+        role="main">
+
+      <!-- ADD VIEWS HERE -->
+      <view-home name="home"></view-home>
+      <view-default name="default" subroute-data="[[subrouteData]]"></view-default>
+      <view-default-chat name="default-chat" subroute-data="[[subrouteData]]"></view-default-chat>
+      <view-default-panel name="default-panel" subroute-data="[[subrouteData]]"></view-default-panel>
+      <view-default-hearts name="default-hearts" subroute-data="[[subrouteData]]"></view-default-hearts>
+      <view-default-info name="default-info" subroute-data="[[subrouteData]]"></view-default-info>
+      <view-default-subject name="default-subject" subroute-data="[[subrouteData]]"></view-default-subject>
+      <view-default-tip name="default-tip" subroute-data="[[subrouteData]]"></view-default-tip>
+
+    </iron-pages>
+
+  </template>
+
+  <script>
+    class MyApp extends Polymer.Element {
+
+      static get is() { return 'my-app'; }
+
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+          },
+          rootPattern: String,
+          routeData: Object,
+          subroute: String,
+          subrouteData: Object,
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
+
+      constructor() {
+        super();
+        this.rootPattern = (new URL(this.rootPath)).pathname;
+      }
+
+      _routePageChanged(page) {
+        if (page === undefined) return;
+        this.page = page || 'home';
+      }
+
+      _getDirectoryAndFile(page) {
+        const [directory, file] = page.split('-');
+
+        if (!file) {
+          return [directory, `view-${directory}.html`];
+        }
+
+        return [directory, `view-${directory}-${file}.html`];
+      }
+
+      _getPageUrl(page) {
+        const [directory, file] = this._getDirectoryAndFile(page);
+        return this.resolveUrl(`views/${directory}/${file}`);
+      }
+
+      _pageChanged(page) {
+        const url = this._getPageUrl(page);
+        Polymer.importHref(url, null, () => this._showHome(), true);
+      }
+
+      _showHome() {
+        this.page = 'home';
+      }
+    }
+
+    window.customElements.define(MyApp.is, MyApp);
+  </script>
+</dom-module>

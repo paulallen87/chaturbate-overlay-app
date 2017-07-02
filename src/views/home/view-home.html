@@ -1,0 +1,166 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../../bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../my-icons.html">
+
+<dom-module id="view-home">
+  <template>
+    <style include="app-grid-style">
+      :host {
+        --app-primary-color: var(--paper-blue-900);
+        --app-secondary-color: black;
+        --app-grid-columns: 3;
+        --app-grid-gutter: 20px;
+        --paper-card-header-color: #fff;
+        display: block;
+      }
+
+      dom-repeat {
+        display: none;
+      }
+
+      app-header-layout {
+        background-color: #ccc;
+      }
+
+      app-header {
+        color: #fff;
+        background-color: var(--paper-grey-700);
+
+        @apply --shadow-elevation-2dp;
+      }
+
+      app-header a,
+      app-header a:active,
+      app-header a:visited {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      paper-card {
+        width: 100%;
+        --paper-card: {
+
+        }
+        --paper-card-header: {
+          background-color: var(--paper-blue-700);
+        }
+        --paper-card-content: {
+          padding: 0;
+        }
+      }
+
+      paper-card .screenshot iron-image {
+        width: 100%;
+        height: 300px;
+        background: #fff;
+      }
+
+      paper-card .description {
+        background-color: #fafafa;
+        border-top: 1px solid #e8e8e8;
+        padding: 16px;
+      }
+    </style>
+
+    <iron-ajax
+        auto
+        url="/src/views/view-manifest.json"
+        handle-as="json"
+        last-response="{{viewDirs}}"
+        debounce-duration="300">
+    </iron-ajax>
+  
+    <!-- Header content -->
+    <app-header-layout fullbleed has-scrolling-region>
+      <app-header slot="header" condenses reveals>
+        <app-toolbar elevation="2">
+          <div main-title>Chaturbate Overlays</div>
+          <div spacer></div>
+          <a href="https://hub.docker.com/r/paulallen87/chaturbate-overlay-app/" tabindex="-1">
+            <paper-icon-button icon="my-icons:docker"></paper-icon-button>
+            <paper-tooltip>Docker Image</paper-tooltip>
+          </a>
+          <a href="https://github.com/paulallen87/chaturbate-overlay-app" tabindex="-1">
+          <paper-icon-button icon="my-icons:github"></paper-icon-button>
+          <paper-tooltip>Github Repo</paper-tooltip>
+        </app-toolbar>
+      </app-header>
+      <div class="centered-container">
+        <ul class="app-grid">
+          <template is="dom-repeat" items="[[viewDirs.dirs]]" as="dirItem">
+            <iron-ajax
+                auto
+                url="{{_getViewDirUrl(dirItem)}}"
+                handle-as="json"
+                last-response="{{dir}}"
+                debounce-duration="300">
+            </iron-ajax>
+
+            <template is="dom-repeat" items="[[dir.views]]" as="viewItem">
+              <li>
+                <paper-card heading="[[viewItem.title]]">
+                  
+                  <div class="card-content">
+                    <div class="screenshot">
+                      <a href="[[rootPath]][[viewItem.name]]">
+                        <iron-image preload
+                                    fade
+                                    position="center top"
+                                    sizing="contain"
+                                    src="{{_getScreenshotUrl(dirItem, viewItem)}}">
+                        </iron-image>
+                      </a>
+                      <paper-ripple recenters></paper-ripple>
+                    </div>
+                    <!--<div class="description">
+                      [[viewItem.description]]
+                    </div>-->
+                  </div>
+                </paper-card>
+              </li>
+            </template>
+          </template>
+        </ul>
+      </div>
+    </app-header-layout>
+  </template>
+
+  <script>
+    class ViewHome extends Polymer.Element {
+      static get is() { return 'view-home'; }
+
+      _getViewDirUrl(dir) {
+        return `/src/views/${dir.name}/view-manifest.json`;
+      }
+
+      _getScreenshotUrl(dir, view) {
+        return `/images/views/${dir.name}/${view.screenshot}`;
+      }
+    }
+
+    window.customElements.define(ViewHome.is, ViewHome);
+  </script>
+</dom-module>

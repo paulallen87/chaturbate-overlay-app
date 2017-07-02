@@ -1,0 +1,45 @@
+{
+  "name": "@paulallen87/chaturbate-overlay-app",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulallen87/chaturbate-overlay-app.git"
+  },
+  "keywords": [
+    "chaturbate"
+  ],
+  "author": "Paul Allen <“paul.allen.87.555@gmail.com”>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/paulallen87/chaturbate-overlay-app/issues"
+  },
+  "homepage": "https://github.com/paulallen87/chaturbate-overlay-app#readme",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "eslint": "^4.1.1",
+    "eslint-config-google": "^0.8.0",
+    "eslint-plugin-html": "^3.0.0",
+    "eslint-plugin-node": "^5.1.0",
+    "polymer-cli": "^1.2.0",
+    "yarn": "^0.24.5"
+  },
+  "scripts": {
+    "lint": "npm run lint:javascript",
+    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "polymer test",
+    "test:integration": "polymer build",
+    "serve": "polymer serve",
+    "install_deps": "polymer install",
+    "install_deps_prod": "polymer install --env=production",
+    "build": "polymer build --preset es6-bundled --verbose --env=production",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@paulallen87/chaturbate-socket-server": "^1.0.13",
+    "express": "^4.15.3"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "views": [
+    {
+      "name": "default",
+      "title": "Default Overlay",
+      "description": "hello world",
+      "screenshot": "screenshot.png"
+    },
+    {
+      "name": "default-chat",
+      "title": "Chat",
+      "description": "hello world",
+      "screenshot": "screenshot-chat.png"
+    },
+    {
+      "name": "default-panel",
+      "title": "Panel",
+      "description": "hello world",
+      "screenshot": "screenshot-panel.png"
+    },
+    {
+      "name": "default-hearts",
+      "title": "Hearts",
+      "description": "hello world",
+      "screenshot": "screenshot-hearts.png"
+    },
+    {
+      "name": "default-info",
+      "title": "Info",
+      "description": "hello world",
+      "screenshot": "screenshot-info.png"
+    },
+    {
+      "name": "default-subject",
+      "title": "Subject",
+      "description": "hello world",
+      "screenshot": "screenshot-subject.png"
+    },
+    {
+      "name": "default-tip",
+      "title": "Tip",
+      "description": "hello world",
+      "screenshot": "screenshot-tip.png"
+    }
+  ]
+}

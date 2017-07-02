@@ -1,0 +1,187 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../../../bower_components/chaturbate-controller/chaturbate-controller.html">
+<link rel="import" href="../../../bower_components/chaturbate-chat/chaturbate-chat.html">
+<link rel="import" href="../../../bower_components/chaturbate-hearts/chaturbate-hearts.html">
+<link rel="import" href="../../../bower_components/chaturbate-info/chaturbate-info.html">
+<link rel="import" href="../../../bower_components/chaturbate-subject/chaturbate-subject.html">
+<link rel="import" href="../../../bower_components/chaturbate-panel/chaturbate-panel.html">
+<link rel="import" href="../../../bower_components/chaturbate-goal/chaturbate-goal.html">
+
+<dom-module id="view-default">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      paper-spinner {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        --paper-spinner-stroke-width: 6px;
+        --paper-spinner-color: var(--google-red-500);
+      }
+
+      paper-toast {
+        width: 300px;
+        margin-left: calc(50vw - 150px);
+        text-align: center;
+        --paper-toast-background-color: #ff3;
+        --paper-toast-color: #003;
+      }
+
+      chaturbate-hearts {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 300px;
+      }
+
+      chaturbate-chat {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        right: 8px;
+        --cb-chat-delim-mixin: {
+          display: none;
+        }
+      }
+
+      chaturbate-info {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        margin: 4px;
+      }
+
+      chaturbate-subject {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        margin: 4px;
+      }
+
+      chaturbate-panel {
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        margin: 4px;
+      }
+
+      chaturbate-goal {
+        position: absolute;
+        top: 50%;
+        left: 8px;
+        width: 200px;
+        margin: 4px;
+      }
+    </style>
+
+    <chaturbate-controller 
+        username="[[subrouteData.username]]"
+        connected="{{connected}}"
+        state="{{state}}"
+        ready="{{ready}}"
+        room="{{room}}"
+        model-status="{{modelStatus}}"
+        welcome-message="{{welcomeMessage}}"
+        current-subject="{{currentSubject}}"
+        panel="{{panel}}"
+        app-name-1="{{appName1}}"
+        app-name-2="{{appName2}}"
+        app-name-3="{{appName3}}"
+        view-count="{{viewCount}}"
+        chat="{{chat}}"
+        max-chat-length="3"
+        tips="{{tips}}"
+        max-tips-length="5"
+        goal="{{goal}}"
+        on-kick="_handleKick"
+        on-silence="_handleSilence"
+        on-promote="_handlePromote"
+        on-purchase="_handlePurchase"
+        on-revoke="_handleRevoke"
+        on-room-entry="_handleRoomEntry"
+        on-room-leave="_handleRoomLeave"
+        on-room-message="_handleRoomMessage"
+        on-tip="_handleTip"
+        on-refresh-panel="_handleRefreshPanel">
+    </chaturbate-controller>
+
+    <paper-spinner active$="{{!ready}}"></paper-spinner>
+    <paper-toast id="toast" vertical-align="bottom" duration="10000"></paper-toast>
+    <chaturbate-chat items="{{chat}}"></chaturbate-chat>
+    <chaturbate-hearts id="hearts"></chaturbate-hearts>
+    <chaturbate-info view-count="{{viewCount}}"></chaturbate-info>
+    <chaturbate-subject subject="{{currentSubject}}"></chaturbate-subject>
+    <chaturbate-panel panel="{{panel}}"></chaturbate-panel>
+    <chaturbate-goal goal="{{goal}}"></chaturbate-goal>
+  </template>
+
+  <script>
+    class ViewDefault extends Polymer.Element {
+      static get is() { return 'view-default'; }
+
+      static get properties() {
+        return {
+          subrouteData: Object,
+        };
+      }
+
+      _handleKick(e) {
+
+      }
+
+      _handleSilence(e) {
+
+      }
+
+      _handlePromote(e) {
+
+      }
+
+      _handlePurchase(e) {
+
+      }
+
+      _handleRevoke(e) {
+
+      }
+
+      _handleRoomEntry(e) {
+
+      }
+
+      _handleRoomLeave(e) {
+
+      }
+
+      _handleRoomMessage(e) {
+
+      }
+
+      _handleTip(e) {
+        this.$.hearts.show(e.detail);
+
+        if (e.detail.amount >= 100) {
+          this.$.toast.text =
+              `${e.detail.user.username} tipped ${e.detail.amount} tokens!`;
+          this.$.toast.open();
+        }
+      }
+
+      _handleRefreshPanel(e) {
+
+      }
+    }
+
+    window.customElements.define(ViewDefault.is, ViewDefault);
+  </script>
+</dom-module>

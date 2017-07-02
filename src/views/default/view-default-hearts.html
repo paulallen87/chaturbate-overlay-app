@@ -1,0 +1,61 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../../bower_components/chaturbate-controller/chaturbate-controller.html">
+<link rel="import" href="../../../bower_components/chaturbate-hearts/chaturbate-hearts.html">
+
+<dom-module id="view-default-hearts">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      paper-spinner {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        --paper-spinner-stroke-width: 6px;
+        --paper-spinner-color: var(--google-red-500);
+      }
+
+      chaturbate-hearts {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        right: 8px;
+        top: 8px;
+      }
+    </style>
+
+    <chaturbate-controller 
+        username="[[subrouteData.username]]"
+        ready="{{ready}}"
+        on-tip="_handleTip">
+    </chaturbate-controller>
+
+    <paper-spinner active$="{{!ready}}"></paper-spinner>
+    <chaturbate-hearts id="hearts"></chaturbate-hearts>
+  </template>
+
+  <script>
+    class ViewDefaultHearts extends Polymer.Element {
+      static get is() { return 'view-default-hearts'; }
+
+      static get properties() {
+        return {
+          subrouteData: Object,
+        };
+      }
+
+      _handleTip(e) {
+        this.$.hearts.show(e.detail);
+      }
+    }
+
+    window.customElements.define(ViewDefaultHearts.is, ViewDefaultHearts);
+  </script>
+</dom-module>

@@ -1,0 +1,65 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../../../bower_components/chaturbate-controller/chaturbate-controller.html">
+
+<dom-module id="view-default-tip">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      paper-spinner {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        --paper-spinner-stroke-width: 6px;
+        --paper-spinner-color: var(--google-red-500);
+      }
+
+      paper-toast {
+        width: 300px;
+        margin-left: calc(50vw - 150px);
+        text-align: center;
+        --paper-toast-background-color: #ff3;
+        --paper-toast-color: #003;
+      }
+    </style>
+
+    <chaturbate-controller 
+        username="[[subrouteData.username]]"
+        ready="{{ready}}"
+        on-tip="_handleTip">
+    </chaturbate-controller>
+
+    <paper-spinner active$="{{!ready}}"></paper-spinner>
+    <paper-toast id="toast" vertical-align="bottom" duration="10000"></paper-toast>
+  </template>
+
+  <script>
+    class ViewDefaultTip extends Polymer.Element {
+      static get is() { return 'view-default-tip'; }
+
+      static get properties() {
+        return {
+          subrouteData: Object,
+        };
+      }
+
+      _handleTip(e) {
+        if (e.detail.amount >= 100) {
+          this.$.toast.text =
+              `${e.detail.user.username} tipped ${e.detail.amount} tokens!`;
+          this.$.toast.open();
+        }
+      }
+    }
+
+    window.customElements.define(ViewDefaultTip.is, ViewDefaultTip);
+  </script>
+</dom-module>
