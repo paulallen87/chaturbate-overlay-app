@@ -39,7 +39,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@paulallen87/chaturbate-socket-server": "^1.0.13",
-    "express": "^4.15.3"
+    "@paulallen87/chaturbate-socket-server": "^1.0.15",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+    "spdy": "^3.4.7"
   }
 }

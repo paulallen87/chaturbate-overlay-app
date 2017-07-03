@@ -75,5 +75,7 @@ RUN apk del --purge --force \
         /usr/lib/node_modules/npm/scripts
 
 EXPOSE 8080
+EXPOSE 9090
+VOLUME /build/certs
 WORKDIR /build
 CMD ["yarn", "start"]
