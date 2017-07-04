@@ -20,6 +20,7 @@ COPY src/ /app/src/
 
 ENV NODE_ENV="production" \
     FRONTEND_BUNDLE="es6-bundled" \
+    ACL_ENABLED="0" \
     DEBUG="chaturbate:*" \
     LIGHTHOUSE_CHROMIUM_PATH="/usr/bin/chromium-browser" \
     DEBIAN_FRONTEND="noninteractive" \
@@ -77,5 +78,6 @@ RUN apk del --purge --force \
 EXPOSE 8080
 EXPOSE 9090
 VOLUME /build/certs
+VOLUME /build/config
 WORKDIR /build
 CMD ["yarn", "start"]

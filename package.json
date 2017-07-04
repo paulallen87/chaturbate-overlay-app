@@ -28,6 +28,7 @@
     "yarn": "^0.24.5"
   },
   "scripts": {
+    "update_deps": "yarn upgrade && bower update",
     "lint": "npm run lint:javascript",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",

@@ -14,10 +14,11 @@ echo "Building Server"
 echo "========================================================================="
 
 export NODE_ENV="production"
-mkdir -p certs
+mkdir -p certs config
 cp yarn.lock build/
 cp index.js build/
 cp package.json build/
+cp -R config build/
 cp -R certs build/
 cd build
 yarn install --production --unsafe-perm || exit 1

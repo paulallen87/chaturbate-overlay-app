@@ -1,0 +1,35 @@
+{
+    "family": "chaturbate",
+    "volumes": [
+        {
+            "name": "certs",
+            "host": {}
+        }
+    ],
+    "containerDefinitions": [
+        {
+            "environment": [],
+            "name": "overlay-app",
+            "image": "paulallen87/chaturbate-overlay-app",
+            "cpu": 10,
+            "memory": 500,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 80
+                },
+                {
+                    "containerPort": 9090,
+                    "hostPort": 443
+                }
+            ],
+            "mountPoints": [
+                {
+                    "sourceVolume": "certs",
+                    "containerPath": "/build/certs"
+                }
+            ],
+            "essential": true
+        }
+    ]
+}

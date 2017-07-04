@@ -37,8 +37,10 @@ const httpServer = http.createServer(app);
 const spdyServer = spdy.createServer(spdyOptions, app);
 const cb = new ChaturbateSocketServer(30000);
 
-cb.attach(httpServer);
-cb.attach(spdyServer);
+cb.accessControl(process.env.ACL_ENABLED == '1')
+  .accessList(path.join(__dirname, 'config/acl.json'))
+  .attach(httpServer)
+  .attach(spdyServer);
 
 httpServer.listen(8080, () => {
   logging.log('Listening on %d', httpServer.address().port);

@@ -3,25 +3,25 @@
 
 
 "@paulallen87/chaturbate-browser@^1.1.10":
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/@paulallen87/chaturbate-browser/-/chaturbate-browser-1.1.11.tgz#14803713240e4288a7bcc76bc92ac03f0a84bbf6"
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/@paulallen87/chaturbate-browser/-/chaturbate-browser-1.1.14.tgz#fe69d0b0536d0008270934d29044a54cf35519d0"
   dependencies:
     chrome-remote-interface "^0.23.2"
     debug "^2.6.8"
     lighthouse "^2.1.0"
 
 "@paulallen87/chaturbate-controller@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@paulallen87/chaturbate-controller/-/chaturbate-controller-1.0.11.tgz#cce33fac89574d4798bda14a76e5fdb615ec4886"
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@paulallen87/chaturbate-controller/-/chaturbate-controller-1.0.13.tgz#e508f3fdb63df46175d1ad03801f70d5a3ea5710"
   dependencies:
-    "@paulallen87/chaturbate-events" "^1.1.3"
+    "@paulallen87/chaturbate-events" "^1.1.6"
     "@paulallen87/chaturbate-panel-parser" "^1.0.4"
     cheerio "^1.0.0-rc.1"
     debug "^2.6.8"
 
-"@paulallen87/chaturbate-events@^1.1.3":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@paulallen87/chaturbate-events/-/chaturbate-events-1.1.5.tgz#2ddba7bb73d998646c04edfa1e9667c0f5092193"
+"@paulallen87/chaturbate-events@^1.1.6":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@paulallen87/chaturbate-events/-/chaturbate-events-1.1.7.tgz#f3b788a55bf2d8d6c3a4127c24c489bb1be409fb"
   dependencies:
     debug "^2.6.8"
 
@@ -33,8 +33,8 @@
     memoizee "^0.4.5"
 
 "@paulallen87/chaturbate-socket-server@^1.0.15":
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/@paulallen87/chaturbate-socket-server/-/chaturbate-socket-server-1.0.15.tgz#23e395e618d946fd8c0e51611b2b4c8b556abb36"
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@paulallen87/chaturbate-socket-server/-/chaturbate-socket-server-1.0.16.tgz#75518f85737e7d7348374f29ce084c65f3d3da45"
   dependencies:
     "@paulallen87/chaturbate-browser" "^1.1.10"
     "@paulallen87/chaturbate-controller" "^1.0.11"
@@ -1779,10 +1779,8 @@ commander@2.9.0, commander@2.9.x, commander@~2.9.0:
     graceful-readlink ">= 1.0.0"
 
 commander@^2.9.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.10.0.tgz#e1f5d3245de246d1a5ca04702fa1ad1bd7e405fe"
-  dependencies:
-    graceful-readlink ">= 1.0.0"
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -4082,13 +4080,9 @@ mime@1.2.11:
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.2.11.tgz#58203eed86e3a5ef17aed2b7d9ebd47f0a60dd10"
 
-mime@1.3.4:
+mime@1.3.4, mime@^1.2.11, mime@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.3.4.tgz#115f9e3b6b3daf2959983cb38f149a2d40eb5d53"
-
-mime@^1.2.11, mime@^1.3.4:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-1.3.6.tgz#591d84d3653a6b0b4a3b9df8de5aa8108e72e5e0"
 
 mimic-fn@^1.0.0:
   version "1.1.0"
@@ -6153,13 +6147,9 @@ upper-case@^1.1.1:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/upper-case/-/upper-case-1.1.3.tgz#f6b4501c2ec4cdd26ba78be7222961de77621598"
 
-urijs@1.16.1:
+urijs@1.16.1, urijs@^1.16.1:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.16.1.tgz#859ad31890f5f9528727be89f1932c94fb4731e2"
-
-urijs@^1.16.1:
-  version "1.18.10"
-  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.18.10.tgz#b94463eaba59a1a796036a467bb633c667f221ab"
 
 url-parse-lax@^1.0.0:
   version "1.0.0"
