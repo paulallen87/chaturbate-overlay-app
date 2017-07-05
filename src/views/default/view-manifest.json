@@ -41,6 +41,12 @@
       "title": "Tip",
       "description": "hello world",
       "screenshot": "screenshot-tip.png"
+    },
+    {
+      "name": "default-goal",
+      "title": "Goal",
+      "description": "hello world",
+      "screenshot": "screenshot-goal.png"
     }
   ]
 }
