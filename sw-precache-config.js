@@ -16,6 +16,7 @@ module.exports = {
     '/manifest.json',
     '/images/**/*',
     '/src/views/**/view-manifest.json',
+    '/src/views/**/images/*',
     '/bower_components/webcomponentsjs/*',
     '/bower_components/web-animations-js/*',
     '/socket.io/socket.io.js',

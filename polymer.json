@@ -3,7 +3,14 @@
   "shell": "src/my-app.html",
   "fragments": [
     "src/views/home/view-home.html",
-    "src/views/default/view-default.html"
+    "src/views/default/view-default.html",
+    "src/views/default/view-default-chat.html",
+    "src/views/default/view-default-goal.html",
+    "src/views/default/view-default-hearts.html",
+    "src/views/default/view-default-info.html",
+    "src/views/default/view-default-panel.html",
+    "src/views/default/view-default-subject.html",
+    "src/views/default/view-default-tip.html"
   ],
   "sources": [
     "src/**/*",
