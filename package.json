@@ -25,7 +25,7 @@
     "eslint-plugin-html": "^3.0.0",
     "eslint-plugin-node": "^5.1.0",
     "polymer-cli": "^1.2.0",
-    "yarn": "^0.24.5"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "update_deps": "yarn upgrade && bower update",
