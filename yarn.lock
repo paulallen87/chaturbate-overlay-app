@@ -5945,9 +5945,10 @@ ternary-stream@^2.0.1:
     merge-stream "^1.0.0"
     through2 "^2.0.1"
 
-"test-fixture@github:polymerelements/test-fixture":
-  version "3.0.0-rc.1"
-  resolved "https://codeload.github.com/polymerelements/test-fixture/tar.gz/26118ef0467501c33c02316e7016a2837baba10f"
+test-fixture@PolymerElements/test-fixture:
+  version "4.0.2"
+  uid b5a0c0bbce9d3ef36ec09d26458b1cfedf89b8c5
+  resolved "https://codeload.github.com/PolymerElements/test-fixture/tar.gz/b5a0c0bbce9d3ef36ec09d26458b1cfedf89b8c5"
 
 test-value@^2.1.0:
   version "2.1.0"
@@ -6108,8 +6109,8 @@ typical@^2.6.0:
   resolved "https://registry.yarnpkg.com/typical/-/typical-2.6.1.tgz#5c080e5d661cbbe38259d2e70a3c7253e873881d"
 
 ua-parser-js@^0.7.12:
-  version "0.7.13"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.13.tgz#cd9dd2f86493b3f44dbeeef3780fda74c5ee14be"
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
 
 uglify-js@3.0.x:
   version "3.0.24"
