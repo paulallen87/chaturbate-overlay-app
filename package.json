@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@paulallen87/chaturbate-socket-server": "^1.0.15",
-    "express": "^4.15.3",
+    "express": "^4.17.3",
     "morgan": "^1.8.2",
     "spdy": "^3.4.7"
   }
